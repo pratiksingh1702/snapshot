@@ -3,13 +3,37 @@
   "displayName": "Snapshotter",
   "description": "Lightweight local snapshot/versioning for code files inside VS Code.",
   "version": "0.0.1",
-  "publisher": "your-name-or-id",
+  "publisher": "pratiksingh", 
+  "categories": [ "Other"],
+  "keywords": [
+    "snapshot",
+    "timeline",
+    "version history",
+    "diff",
+    "restore",
+    "code travel",
+    "snippet",
+    "experiment mode"
+  ],
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/pratiksingh1702/snapshot"
+},
+"bugs": {
+  "url": "https://github.com/pratiksingh1702/snapshot/issues"
+},
+"homepage": "https://github.com/pratiksingh1702/snapshot",
+"icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#0b0f14",
+    "theme": "dark"
+  },
   "engines": {
     "vscode": "^1.90.0"
   },
-  "categories": [
-    "Other"
-  ],
+
+  
+
   "activationEvents": [
     "onStartupFinished",
     "onCommand:snapshotter.createSnapshot",
@@ -17,9 +41,15 @@
     "onCommand:snapshotter.openTimeline",
     "onCommand:snapshotter.experimentMode",
     "onCommand:snapshotter.addNoteToLastSnapshot",
-    "onCommand:snapshotter.openSplitTimeline3D"
+    "onCommand:snapshotter.openSplitTimeline3D",
+    "onCommand:snapshotter.createSnippetSnapshot",
+    "onCommand:snapshotter.deleteSnapshot",
+    "onCommand:snapshotter.deleteFileSnapshots",
+    "onCommand:snapshotter.openSplitTimeline"
   ],
+
   "main": "./dist/extension.js",
+
   "contributes": {
     "commands": [
       {
@@ -42,67 +72,63 @@
         "command": "snapshotter.addNoteToLastSnapshot",
         "title": "Snapshotter: Add Note to Last Snapshot"
       },
-
       {
         "command": "snapshotter.createSnippetSnapshot",
         "title": "Snapshotter: Save Snapshot of Selection"
       },
       {
-    "command": "snapshotter.deleteSnapshot",
-    "title": "Delete Snapshot"
-},
-{
-    "command": "snapshotter.deleteFileSnapshots",
-    "title": "Delete All Snapshots for File"
-}
-,
-{
-    "command": "snapshotter.openSplitTimeline",
-    "title": "Snapshotter: Open Split-Screen Timeline"
-},
-{
-  "command": "snapshotter.openSplitTimeline3D",
-  "title": "Snapshotter: Open 3D Split Timeline"
-}
-
-
-
+        "command": "snapshotter.deleteSnapshot",
+        "title": "Snapshotter: Delete Snapshot"
+      },
+      {
+        "command": "snapshotter.deleteFileSnapshots",
+        "title": "Snapshotter: Delete All Snapshots for File"
+      },
+      {
+        "command": "snapshotter.openSplitTimeline",
+        "title": "Snapshotter: Open Split-Screen Timeline"
+      },
+      {
+        "command": "snapshotter.openSplitTimeline3D",
+        "title": "Snapshotter: Open 3D Split Timeline"
+      }
     ],
+
     "views": {
-    "explorer": [
+      "explorer": [
         {
-            "id": "snapshotterTimeline",
-            "name": "Snapshot Timeline"
+          "id": "snapshotterTimeline",
+          "name": "Snapshot Timeline"
         }
-    ]
-},
+      ]
+    },
 
-"menus": {
-    "editor/context": [
+    "menus": {
+      "editor/context": [
         {
-            "command": "snapshotter.createSnippetSnapshot",
-            "group": "2_snapshot",
-            "when": "editorHasSelection"
-        },
-         {
-            "command": "snapshotter.openSplitTimeline",
-            "group": "navigation",
-            "when": "resourceExtname =~ /.*/"
-        }
-    ],
-    "view/item/context": [
-        {
-            "command": "snapshotter.deleteSnapshot",
-            "when": "view == snapshotterTimeline && viewItem == snapshot",
-            "group": "inline"
+          "command": "snapshotter.createSnippetSnapshot",
+          "group": "2_snapshot",
+          "when": "editorHasSelection"
         },
         {
-            "command": "snapshotter.deleteFileSnapshots",
-            "when": "view == snapshotterTimeline && viewItem == fileNode",
-            "group": "inline"
+          "command": "snapshotter.openSplitTimeline",
+          "group": "navigation"
         }
-    ]
-},
+      ],
+      "view/item/context": [
+        {
+          "command": "snapshotter.deleteSnapshot",
+          "when": "view == snapshotterTimeline && viewItem == snapshot",
+          "group": "inline"
+        },
+        {
+          "command": "snapshotter.deleteFileSnapshots",
+          "when": "view == snapshotterTimeline && viewItem == fileNode",
+          "group": "inline"
+        }
+      ]
+    },
+
     "configuration": {
       "type": "object",
       "title": "Snapshotter Settings",
@@ -130,17 +156,18 @@
       }
     }
   },
-  
+
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "lint": "",
-    "test": ""
+    "package": "npx vsce package"
   },
+
   "devDependencies": {
     "@types/node": "^22.0.0",
     "@types/vscode": "^1.90.0",
-    "typescript": "^5.5.0"
+    "typescript": "^5.5.0",
+    "@vscode/vsce": "^2.30.0"
   }
 }
