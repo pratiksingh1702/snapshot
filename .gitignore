@@ -6,7 +6,6 @@ out/
 dist/
 
 # VS Code Extension files
-.vscode-test/
 *.vsix
 
 # OS files
@@ -23,14 +22,12 @@ yarn-debug.log*
 yarn-error.log*
 
 # Editor
-.vscode/
-!.vscode/launch.json
-!.vscode/tasks.json
-!.vscode/settings.json
-!.vscode/extensions.json
 *.code-workspace
 
 # Runtime data
 *.pid
 *.seed
 *.pid.lock
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
