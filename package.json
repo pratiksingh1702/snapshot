@@ -1,0 +1,146 @@
+{
+  "name": "snapshotter",
+  "displayName": "Snapshotter",
+  "description": "Lightweight local snapshot/versioning for code files inside VS Code.",
+  "version": "0.0.1",
+  "publisher": "your-name-or-id",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:snapshotter.createSnapshot",
+    "onCommand:snapshotter.listSnapshots",
+    "onCommand:snapshotter.openTimeline",
+    "onCommand:snapshotter.experimentMode",
+    "onCommand:snapshotter.addNoteToLastSnapshot",
+    "onCommand:snapshotter.openSplitTimeline3D"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "snapshotter.createSnapshot",
+        "title": "Snapshotter: Create Snapshot for Current File"
+      },
+      {
+        "command": "snapshotter.listSnapshots",
+        "title": "Snapshotter: List & Restore Snapshots"
+      },
+      {
+        "command": "snapshotter.openTimeline",
+        "title": "Snapshotter: Open Timeline Panel"
+      },
+      {
+        "command": "snapshotter.experimentMode",
+        "title": "Snapshotter: Run Experiment With Snapshot"
+      },
+      {
+        "command": "snapshotter.addNoteToLastSnapshot",
+        "title": "Snapshotter: Add Note to Last Snapshot"
+      },
+
+      {
+        "command": "snapshotter.createSnippetSnapshot",
+        "title": "Snapshotter: Save Snapshot of Selection"
+      },
+      {
+    "command": "snapshotter.deleteSnapshot",
+    "title": "Delete Snapshot"
+},
+{
+    "command": "snapshotter.deleteFileSnapshots",
+    "title": "Delete All Snapshots for File"
+}
+,
+{
+    "command": "snapshotter.openSplitTimeline",
+    "title": "Snapshotter: Open Split-Screen Timeline"
+},
+{
+  "command": "snapshotter.openSplitTimeline3D",
+  "title": "Snapshotter: Open 3D Split Timeline"
+}
+
+
+
+    ],
+    "views": {
+    "explorer": [
+        {
+            "id": "snapshotterTimeline",
+            "name": "Snapshot Timeline"
+        }
+    ]
+},
+
+"menus": {
+    "editor/context": [
+        {
+            "command": "snapshotter.createSnippetSnapshot",
+            "group": "2_snapshot",
+            "when": "editorHasSelection"
+        },
+         {
+            "command": "snapshotter.openSplitTimeline",
+            "group": "navigation",
+            "when": "resourceExtname =~ /.*/"
+        }
+    ],
+    "view/item/context": [
+        {
+            "command": "snapshotter.deleteSnapshot",
+            "when": "view == snapshotterTimeline && viewItem == snapshot",
+            "group": "inline"
+        },
+        {
+            "command": "snapshotter.deleteFileSnapshots",
+            "when": "view == snapshotterTimeline && viewItem == fileNode",
+            "group": "inline"
+        }
+    ]
+},
+    "configuration": {
+      "type": "object",
+      "title": "Snapshotter Settings",
+      "properties": {
+        "snapshotter.autoSnapshotOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically create a snapshot when saving the file."
+        },
+        "snapshotter.maxSnapshotsPerFile": {
+          "type": "number",
+          "default": 100,
+          "description": "Maximum snapshots to retain per file."
+        },
+        "snapshotter.maxSnapshotAgeDays": {
+          "type": "number",
+          "default": 30,
+          "description": "Delete snapshots older than this many days."
+        },
+        "snapshotter.experimentRunCommand": {
+          "type": "string",
+          "default": "flutter run",
+          "description": "Command to execute in Experiment Mode."
+        }
+      }
+    }
+  },
+  
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "",
+    "test": ""
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.90.0",
+    "typescript": "^5.5.0"
+  }
+}
