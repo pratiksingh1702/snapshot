@@ -2,9 +2,11 @@
   "name": "snapshotter",
   "displayName": "Snapshotter",
   "description": "Lightweight local snapshot/versioning for code files inside VS Code.",
-  "version": "1.0.1",
-  "publisher": "pratiksingh", 
-  "categories": [ "Other"],
+  "version": "1.0.2",
+  "publisher": "pratiksingh",
+  "categories": [
+    "Other"
+  ],
   "keywords": [
     "snapshot",
     "timeline",
@@ -16,14 +18,14 @@
     "experiment mode"
   ],
   "repository": {
-  "type": "git",
-  "url": "https://github.com/pratiksingh1702/snapshot"
-},
-"bugs": {
-  "url": "https://github.com/pratiksingh1702/snapshot/issues"
-},
-"homepage": "https://github.com/pratiksingh1702/snapshot",
-"icon": "images/icon.png",
+    "type": "git",
+    "url": "https://github.com/pratiksingh1702/snapshot"
+  },
+  "bugs": {
+    "url": "https://github.com/pratiksingh1702/snapshot/issues"
+  },
+  "homepage": "https://github.com/pratiksingh1702/snapshot",
+  "icon": "images/icon.png",
   "galleryBanner": {
     "color": "#0b0f14",
     "theme": "dark"
@@ -31,9 +33,6 @@
   "engines": {
     "vscode": "^1.90.0"
   },
-
-  
-
   "activationEvents": [
     "onStartupFinished",
     "onCommand:snapshotter.createSnapshot",
@@ -47,9 +46,7 @@
     "onCommand:snapshotter.deleteFileSnapshots",
     "onCommand:snapshotter.openSplitTimeline"
   ],
-
   "main": "./dist/extension.js",
-
   "contributes": {
     "commands": [
       {
@@ -93,7 +90,6 @@
         "title": "Snapshotter: Open 3D Split Timeline"
       }
     ],
-
     "views": {
       "explorer": [
         {
@@ -102,7 +98,6 @@
         }
       ]
     },
-
     "menus": {
       "editor/context": [
         {
@@ -128,7 +123,6 @@
         }
       ]
     },
-
     "configuration": {
       "type": "object",
       "title": "Snapshotter Settings",
@@ -156,14 +150,12 @@
       }
     }
   },
-
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "package": "npx vsce package"
   },
-
   "devDependencies": {
     "@types/node": "^22.0.0",
     "@types/vscode": "^1.90.0",
