@@ -1,20 +1,32 @@
 {
   "name": "snapshotter",
   "displayName": "Snapshotter",
-  "description": "Lightweight local snapshot/versioning for code files inside VS Code.",
-  "version": "1.0.1",
-  "publisher": "pratiksingh", 
-  "categories": [ "Other"],
-  "keywords": [
-    "snapshot",
-    "timeline",
-    "version history",
-    "diff",
-    "restore",
-    "code travel",
-    "snippet",
-    "experiment mode"
-  ],
+"description": "Lightweight local history, timeline view, and snapshot-based versioning for VS Code. Create automatic file checkpoints, explore past versions visually, compare diffs, restore previous states instantly, and run safe experiment mode without touching real code — a fast, clean, Git-free time machine for your editor.",
+
+  "version": "1.2.0",
+  "publisher": "pratiksingh",
+ "categories": ["SCM Providers", "Snippets","Extension Packs","Keymaps","Debuggers"],
+
+ "keywords": [
+  "local history",
+  "file history",
+  "timeline",
+  "versioning",
+  "snapshot",
+  "undo",
+  "backup",
+  "restore",
+  "diff",
+  "compare",
+  "recover",
+  "time machine",
+  "autosave",
+  "checkpoint",
+  "version control",
+  "git alternative",
+  "code snapshots"
+],
+
   "repository": {
     "type": "git",
     "url": "https://github.com/pratiksingh1702/snapshot"
